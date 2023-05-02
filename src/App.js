@@ -24,9 +24,21 @@ function App() {
       <Routes>
         {/* Route - Declares an element that should be rendered at a certain URL path. */}
         <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BookList />} />
+
+        {/* Nested Routes */}
+        {/* <Route path="/books" element={<BookList />} />
         <Route path="/books/:id" element={<Book />} />
-        <Route path="/books/new" element={<NewBook />} />
+        <Route path="/books/new" element={<NewBook />} /> */}
+        {/* Same as above */}
+        <Route path="books">
+          <Route index element={<BookList />} />
+          <Route path=":id" element={<Book />} />
+          <Route path="new" element={<NewBook />} />
+        </Route>
+
+        {/* To redirect to default URL when the user goes to an unknown available URLS */}
+        {/* <Route path="*" element={<Navigate to="/" replace />} />  */}
+        {/* To redirect to a specifc component when the user goes to an unknown available URLS */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
