@@ -5,6 +5,7 @@ import Book from "./pages/Book";
 import NewBook from "./pages/NewBook";
 import NotFound from "./pages/NotFound";
 import BookList from "./pages/BookList";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           <li>
             <Link to="/books">Books</Link>
           </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
         </ul>
       </nav>
       {/* Routes - A container for a nested tree of elements that renders the branch that best matches the current location. */}
@@ -30,11 +34,16 @@ function App() {
         <Route path="/books/:id" element={<Book />} />
         <Route path="/books/new" element={<NewBook />} /> */}
         {/* Same as above */}
-        <Route path="books">
+        <Route path="/books">
+          {/* index is a boolean, saying that the route mathces exactly whatever the parent path is, which is "books"  */}
           <Route index element={<BookList />} />
           <Route path=":id" element={<Book />} />
           <Route path="new" element={<NewBook />} />
         </Route>
+
+        {/* Another example of Nested Routes */}
+        {/* When we have one Route, which is calling another bunch of another Rooutes, we have to add "/*" at the end of the path */}
+        <Route path="/profile/*" element={<Profile />} />
 
         {/* To redirect to default URL when the user goes to an unknown available URLS */}
         {/* <Route path="*" element={<Navigate to="/" replace />} />  */}
