@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, NavLink } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Book from "./pages/Book";
@@ -13,11 +13,28 @@ function App() {
       <nav>
         <ul>
           {/* Link - Used to navigate (underneath it's an anchor tag) */}
+          {/* 
+            params
+            * replace - Boolean (when we click on back, we don't to go the previous page, instead we go to before the previous page)
+            * reloadDocument - Boolean (when we click on this, page gets reloaded).
+          */}
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/books">Books</Link>
+            {/* NavLink is same as Link component, with additional properties, 
+            we can use NavLink, when we want to do things when the specific link is active.  */}
+            <NavLink
+              // if we don't want to these way of assigning styles for active link.
+              // one more way is, by default NavLink will have the active className, when the link is active.
+              // so we can define .active { ...styles } in a .css file. It will automatically apply the styles.
+              style={({ isActive }) => {
+                return isActive ? { color: "red" } : {};
+              }}
+              to="/books"
+            >
+              Books
+            </NavLink>
           </li>
           <li>
             <Link to="/profile">Profile</Link>
