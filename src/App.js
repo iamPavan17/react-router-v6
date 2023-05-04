@@ -1,4 +1,4 @@
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Routes, Route, Link, NavLink, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Book from "./pages/Book";
@@ -8,6 +8,7 @@ import BookList from "./pages/BookList";
 import Profile from "./pages/Profile";
 
 function App() {
+  const location = useLocation();
   return (
     <div>
       <nav>
@@ -17,9 +18,13 @@ function App() {
             params
             * replace - Boolean (when we click on back, we don't to go the previous page, instead we go to before the previous page)
             * reloadDocument - Boolean (when we click on this, page gets reloaded).
+            * state - is used to send some data when this URL is active. Can send any data value.
           */}
           <li>
-            <Link to="/">Home</Link>
+            {/* To get the value from state, we make use of useLocation() hook. */}
+            <Link to="/" state="Hi">
+              Home
+            </Link>
           </li>
           <li>
             {/* NavLink is same as Link component, with additional properties, 
@@ -42,6 +47,7 @@ function App() {
           </li>
         </ul>
       </nav>
+      State Value - {location.state}
       {/* Routes - A container for a nested tree of elements that renders the branch that best matches the current location. */}
       <Routes>
         {/* Route - Declares an element that should be rendered at a certain URL path. */}

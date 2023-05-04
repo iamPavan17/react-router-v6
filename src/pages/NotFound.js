@@ -6,7 +6,7 @@ export default function NotFound() {
 
   const handleNavigate = () => {
     // navigate(-1); // -1 means going to previous page. -2 means go backwards two pages and so on.
-    navigate("/");
+    navigate("/", { state: "Error, Coming from Not found Page." });
   };
 
   return (
