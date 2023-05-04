@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound";
 import BookList from "./pages/BookList";
 import Profile from "./pages/Profile";
 import BookLayout from "./pages/BookLayout";
+import PrivateRoute from "./pages/PrivateRoute";
+import Vault from "./pages/Vault";
 
 function App() {
   const location = useLocation();
@@ -46,6 +48,9 @@ function App() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
+          <li>
+            <Link to="/auth/vault">Vault</Link>
+          </li>
         </ul>
       </nav>
 
@@ -70,6 +75,11 @@ function App() {
           <Route index element={<BookList />} />
           <Route path=":id" element={<Book />} />
           <Route path="new" element={<NewBook />} />
+        </Route>
+
+        {/* An example for PrivateRoute */}
+        <Route path="/auth" element={<PrivateRoute />}>
+          <Route path="vault" element={<Vault />} />
         </Route>
 
         {/* Another example of Nested Routes */}
