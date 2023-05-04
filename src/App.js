@@ -28,6 +28,7 @@ function App() {
               // if we don't want to these way of assigning styles for active link.
               // one more way is, by default NavLink will have the active className, when the link is active.
               // so we can define .active { ...styles } in a .css file. It will automatically apply the styles.
+              // *** It just gives the extra styling capabilities.
               style={({ isActive }) => {
                 return isActive ? { color: "red" } : {};
               }}
@@ -59,11 +60,11 @@ function App() {
         </Route>
 
         {/* Another example of Nested Routes */}
-        {/* When we have one Route, which is calling another bunch of another Rooutes, we have to add "/*" at the end of the path */}
+        {/* When we have one Route, which is calling another bunch of Rooutes, we have to add "/*" at the end of the path */}
         <Route path="/profile/*" element={<Profile />} />
 
         {/* To redirect to default URL when the user goes to an unknown available URLS */}
-        {/* <Route path="*" element={<Navigate to="/" replace />} />  */}
+        {/* <Route path="*" element={<Navigate to="/" />} /> */}
         {/* To redirect to a specifc component when the user goes to an unknown available URLS */}
         <Route path="*" element={<NotFound />} />
       </Routes>
