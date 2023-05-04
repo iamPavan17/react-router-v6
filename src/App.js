@@ -6,6 +6,7 @@ import NewBook from "./pages/NewBook";
 import NotFound from "./pages/NotFound";
 import BookList from "./pages/BookList";
 import Profile from "./pages/Profile";
+import BookLayout from "./pages/BookLayout";
 
 function App() {
   const location = useLocation();
@@ -47,7 +48,9 @@ function App() {
           </li>
         </ul>
       </nav>
-      State Value - {location.state}
+
+      <p>State Value - {location.state}</p>
+
       {/* Routes - A container for a nested tree of elements that renders the branch that best matches the current location. */}
       <Routes>
         {/* Route - Declares an element that should be rendered at a certain URL path. */}
@@ -58,7 +61,11 @@ function App() {
         <Route path="/books/:id" element={<Book />} />
         <Route path="/books/new" element={<NewBook />} /> */}
         {/* Same as above */}
-        <Route path="/books">
+        {/* element prop is optional, we can mention, if we want to have some common thing to share with all child Routes.
+          If element is passed, then we should <Outlet />  component inside BookLayout Component to render the child Routes.
+          Same logic can be used to implement PrivateRoutes.
+        */}
+        <Route path="/books" element={<BookLayout />}>
           {/* index is a boolean, saying that the route mathces exactly whatever the parent path is, which is "books"  */}
           <Route index element={<BookList />} />
           <Route path=":id" element={<Book />} />
